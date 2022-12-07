@@ -26,10 +26,18 @@ export const generateSVG = async (hash) => {
   return skulls.hashToSVG(hash);
 };
 
-// export const getTraits = async () => {
-//   return Promise.all(
-//     LAYERS.map((layer, layerIndex) =>
-//       Promise.all(_.range(0, layer.traitCount).map((traitIndex) => skulls.traitDetails(layerIndex, traitIndex)))
-//     )
-//   );
-// };
+export const getTraits = async () => {
+  return Promise.all(
+    layers.map((layer, layerIndex) =>
+      Promise.all(_.range(0, layer.traits.length).map((traitIndex) => skulls.traitDetails(layerIndex, traitIndex)))
+    )
+  );
+};
+
+export const getLinkedTraits = async () => {
+  return Promise.all(
+    layers.map((layer, layerIndex) =>
+      Promise.all(_.range(0, layer.traits.length).map((traitIndex) => skulls.getLinkedTraits(layerIndex, traitIndex)))
+    )
+  );
+};

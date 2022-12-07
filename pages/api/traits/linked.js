@@ -1,7 +1,7 @@
 import * as skulls from "../../../web3/skulls";
 
 export default async function handler(req, res) {
-  const layers = await skulls.getLayers();
+  const traits = await skulls.getLinkedTraits();
 
-  return res.json(layers);
+  return res.json(traits);
 }
