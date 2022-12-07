@@ -1,3 +1,4 @@
+import _ from "lodash";
 import layers from "../data/layers.json";
 
 export const calculateHash = (traitIndices = []) => {
@@ -5,5 +6,13 @@ export const calculateHash = (traitIndices = []) => {
 };
 
 export const randomTraits = () => {
-  return layers.map((layer) => Math.floor(Math.random() * layer.traits.length));
+  return layers.map((layer) => {
+    const total = _.sumBy(layer.traits, "rarity");
+    let r = Math.floor(Math.random() * total);
+    for (let i = 0; i < layer.traits.length; i++) {
+      const { rarity } = layer.traits[i];
+      r -= rarity;
+      if (r < 0) return i;
+    }
+  });
 };

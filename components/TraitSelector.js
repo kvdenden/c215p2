@@ -35,7 +35,7 @@ const TraitSelector = ({ onChange }) => {
             >
               {layer.traits.map((trait, index) => (
                 <option key={index} value={index}>
-                  {trait}
+                  {trait.name}
                 </option>
               ))}
             </select>
