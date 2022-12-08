@@ -8,6 +8,7 @@ import { useDebounce } from "use-debounce";
 const Skull = ({ traitIndices, size }) => {
   const [imageData, setImageData] = useState();
   const [hash, setHash] = useState();
+  const [loading, setLoading] = useState();
 
   useEffect(() => {
     setHash(calculateHash(traitIndices));
@@ -18,20 +19,38 @@ const Skull = ({ traitIndices, size }) => {
   useEffect(() => {
     let ignore;
     if (debouncedHash) {
-      axios.get(`/api/skulls/${debouncedHash}`).then((res) => {
-        if (!ignore) setImageData(res.data);
-      });
+      setLoading(true);
+      axios
+        .get(`/api/skulls/${debouncedHash}`)
+        .then((res) => {
+          if (!ignore) setImageData(res.data);
+        })
+        .finally(() => {
+          if (!ignore) setLoading(false);
+        });
     }
     return () => {
       ignore = true;
     };
   }, [debouncedHash]);
 
-  if (imageData) {
-    return <Image unoptimized src={imageData} alt={hash} width={size} height={size} />;
-  }
-
-  return null;
+  return (
+    <div className="ratio ratio-1x1 w-100">
+      {imageData ? <Image unoptimized src={imageData} alt={hash} width={size} height={size} /> : ""}
+      {loading ? (
+        <div
+          className="d-flex align-items-center justify-content-center"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 };
 
 Skull.defaultProps = {
