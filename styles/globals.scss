@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "nwmd-1337";
+  font-style: normal;
+  src: local("nwmd-1337"), url(../public/fonts/nwmd-1337-817.woff2) format("woff");
+}
+
+$primary: #72fe7d;
+$font-family-monospace: "nwmd-1337", monospace !important;
+$font-family-base: $font-family-monospace !default;
+
+$font-size-base: 0.75rem;
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
+
+@import "./scanlines.scss";
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  color: $primary;
+  background: black;
+}
+
+.nwmd-1337 {
+  font-family: $font-family-monospace;
+}
+
+.terminal {
+  @extend .scanlines;
+  background: radial-gradient(rgba(0, 75, 0, 0.75), black 120%);
+}

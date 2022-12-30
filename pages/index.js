@@ -10,12 +10,13 @@ export default function Home() {
   return (
     <div className="bg-dark">
       <Head>
-        <title>1337 Skulls Browser</title>
+        <title>c215p2</title>
         <meta name="description" content="1337 Skulls Browser - Create your perfect skull" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="d-flex flex-column align-items-center justify-content-center min-vh-100 overflow-hidden p-2">
+      <main className="d-flex flex-column align-items-center justify-content-center min-vh-100 overflow-hidden p-2 terminal">
+        <h1>c215p2 148</h1>
         <div className="d-flex flex-column align-items-stretch" style={{ width: "512px", maxWidth: "100%" }}>
           <Skull traitIndices={traits} size={512} />
           <TraitSelector traits={traits} onChange={setTraits} />

@@ -8,16 +8,16 @@ const TraitSelector = ({ traits, onChange }) => {
     const traitIndex = traits[layerIndex] || 0;
     return (
       <>
-        <div className="form-group row">
-          <div className="col-sm-3 col-form-label">
-            <label htmlFor={layer.name} className="form-label mb-0 fw-bold text-uppercase">
+        <div className="form-group form-group-sm row">
+          <div className="col-sm-4 col-form-label">
+            <label htmlFor={layer.name} className="form-label mb-0">
               {layer.name}
             </label>
           </div>
-          <div className="col-sm-9">
+          <div className="col-sm-8">
             <select
               id={layer.name}
-              className="form-select text-uppercase"
+              className="form-select"
               value={traitIndex}
               onChange={(e) => onChange(e.target.value)}
               aria-label={layer.name}
@@ -46,7 +46,7 @@ const TraitSelector = ({ traits, onChange }) => {
         ))}
       </div>
       <div>
-        <button className="btn btn-primary w-100 fw-bold text-uppercase" onClick={() => onChange(randomTraits())}>
+        <button className="btn btn-primary w-100 py-3" onClick={() => onChange(randomTraits())}>
           24nd0m1z3
         </button>
       </div>

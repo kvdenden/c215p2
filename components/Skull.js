@@ -36,7 +36,13 @@ const Skull = ({ traitIndices, size }) => {
 
   return (
     <div className="ratio ratio-1x1 w-100">
-      {imageData ? <Image unoptimized src={imageData} alt={hash} width={size} height={size} /> : ""}
+      {imageData ? (
+        <a href={imageData} download={`${hash}.svg`}>
+          <Image unoptimized src={imageData} alt={hash} width={size} height={size} />
+        </a>
+      ) : (
+        ""
+      )}
       {loading ? (
         <div
           className="d-flex align-items-center justify-content-center"
