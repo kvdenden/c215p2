@@ -34,6 +34,6 @@ body {
 }
 
 .terminal {
-  @extend .scanlines;
+  // @extend .scanlines;
   background: radial-gradient(rgba(0, 75, 0, 0.75), black 120%);
 }

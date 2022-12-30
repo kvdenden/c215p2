@@ -46,7 +46,7 @@ const TraitSelector = ({ traits, onChange }) => {
         ))}
       </div>
       <div>
-        <button className="btn btn-primary w-100 py-3" onClick={() => onChange(randomTraits())}>
+        <button className="btn btn-outline-primary w-100 py-3" onClick={() => onChange(randomTraits())}>
           24nd0m1z3
         </button>
       </div>
