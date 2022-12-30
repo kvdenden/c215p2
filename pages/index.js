@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <div className="bg-dark">
       <Head>
-        <title>c215p2</title>
-        <meta name="description" content="1337 Skulls Browser - Create your perfect skull" />
+        <title>c215p2 148</title>
+        <meta name="description" content="c215p2 148 - Design your 1337 skull" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
