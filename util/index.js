@@ -16,3 +16,9 @@ export const randomTraits = () => {
     }
   });
 };
+
+export const calculateTraits = (hash) => {
+  return _.words(hash, /\d{3}/g).map((s) => parseInt(s));
+};
+
+export const randomHash = () => calculateHash(randomTraits());

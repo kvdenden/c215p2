@@ -18,8 +18,14 @@ export default function Home() {
       <main className="d-flex flex-column align-items-center justify-content-center min-vh-100 overflow-hidden p-2 terminal">
         <h1>c215p2 148</h1>
         <div className="d-flex flex-column align-items-stretch" style={{ width: "512px", maxWidth: "100%" }}>
-          <Skull traitIndices={traits} size={512} />
-          <TraitSelector traits={traits} onChange={setTraits} />
+          {traits ? (
+            <>
+              <Skull traitIndices={traits} size={512} />
+              <TraitSelector traits={traits} onChange={setTraits} />
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </main>
     </div>

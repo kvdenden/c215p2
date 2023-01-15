@@ -3,13 +3,18 @@ import { ethers } from "ethers";
 import { skulls } from "./contracts";
 import layers from "../data/layers.json";
 
+const encodeData = (data, mimetype = "image/png") => {
+  return `data:${mimetype};base64,` + Buffer.from(data).toString("base64");
+};
+
 export const getTrait = async (layerIndex, traitIndex) => {
   if (layerIndex < 0 || layerIndex >= layers.length) throw "Invalid layer index";
   if (traitIndex < 0 || traitIndex >= layers[layerIndex].traits.length) throw "Invalid trait index";
 
   const [name, mimetype, hidden] = await skulls.traitDetails(layerIndex, traitIndex);
-  const data = await skulls.traitData(layerIndex, traitIndex).then(ethers.utils.arrayify);
-
+  const data = await skulls
+    .traitData(layerIndex, traitIndex)
+    .then((data) => encodeData(ethers.utils.arrayify(data), mimetype));
   return {
     name,
     mimetype,
